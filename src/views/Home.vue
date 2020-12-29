@@ -3,7 +3,7 @@
     <h1>Matchifyyy</h1>
     <h3>By Torre</h3>
     <p>Matchify your next remote dream job!</p>
-    <input type="text" id="username" name="username" v-model="username"><br><br>
+    <input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"><br><br>
     <button @click='getJobsBySkills'>Search!</button>
     
     <ul id="example-1">
@@ -33,6 +33,11 @@ export default {
     ...mapState(['matchedJobs', 'existErrorMessage', 'errorMessage']),
   },
   methods: {
+    pressKey(e) {
+      if (e.keyCode === 13) {
+        this.getJobsBySkills();
+      }
+    },
     getJobsBySkills() {
       if(this.username !== "") {
         this.$store.dispatch('getJobsBySkills', {username: this.username})
