@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:3000/api/";
+const apiUrl = "https://torre-technical-test-server.vercel.app/api/";
 const axios = require("axios");
 
 const getBioByUsername = async ({ username }) => {
