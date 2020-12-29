@@ -7,8 +7,20 @@
     <b-form-input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"
             :state="!existErrorMessage" class="mb-3"></b-form-input>
     <b-button variant="primary" @click='getJobsBySkills'>Search!</b-button>
+    <b-row class="text-center">
+      <b-col></b-col>
+      <b-col cols="1">
+        <bounce-loader
+          :loading="isLoading"
+          class="spinner-loader"
+          color="#38686a"
+          :size="100"
+        />
+      </b-col>
+      <b-col></b-col>
+    </b-row>
 
-    <b-row class="mt-5">
+    <b-row class="mt-5" v-if="!isLoading">
       <b-col cols="12" md="6" lg="4" v-for="job in matchedJobs" :key="job.id">
         <px-card
           :title ="job.organizations[0].name"
@@ -41,7 +53,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['matchedJobs', 'existErrorMessage', 'errorMessage']),
+    ...mapState(['matchedJobs', 'existErrorMessage', 'errorMessage', 'isLoading']),
   },
   methods: {
     pressKey(e) {
@@ -52,6 +64,21 @@ export default {
     getJobsBySkills() {
       if(this.username !== "") {
         this.$store.dispatch('getJobsBySkills', {username: this.username})
+          .then(() => {
+            if(!this.existErrorMessage) {
+              this.$swal({
+                icon: "success",
+                title: "Successful",
+                text: "Matched jobs found",
+              });
+            } else {
+               this.$swal({
+                icon: "error",
+                title: "Oops...",
+                text: "Username does not exist :(",
+              });
+            }
+          })
       } else {
         alert("Please enter a username from Torre");
       }

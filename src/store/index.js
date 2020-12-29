@@ -13,15 +13,14 @@ export default new Vuex.Store({
     totalMatchedJobs: 0,
     existErrorMessage: false,
     errorMessage: "",
+    isLoading: false,
   },
   getters: {},
   mutations: {
     SET_GENOME_BY_USERNAME(state, payload) {
-      alert("entrando a SET_GENOME_BY_USERNAME");
-      console.log("payload");
-      console.log(payload);
       state.genome = payload;
       state.showGenome = true;
+      state.isLoading = false;
     },
     SET_MATCHED_JOBS(state, { results = [], size = 0, total = 0 }) {
       state.matchedJobs = results;
@@ -29,6 +28,7 @@ export default new Vuex.Store({
       state.totalMatchedJobs = total;
       state.existErrorMessage = false;
       state.errorMessage = "";
+      state.isLoading = false;
     },
     SET_ERROR_MESSAGE(state, payload) {
       state.genome = {};
@@ -38,15 +38,14 @@ export default new Vuex.Store({
       state.existErrorMessage = true;
       state.showGenome = false;
       state.errorMessage = payload;
+      state.isLoading = false;
     },
   },
   actions: {
-    async getBioByUsername({ commit }, { username }) {
+    async getBioByUsername({ commit, state }, { username }) {
       try {
+        state.isLoading = true;
         const res = await api.getBioByUsername({ username });
-        console.log("username retrieve!!!!!");
-        console.log(res);
-        alert(res.message);
         if (res.data) {
           commit("SET_GENOME_BY_USERNAME", res.data);
         } else {
@@ -56,10 +55,10 @@ export default new Vuex.Store({
         console.log(error);
       }
     },
-    async getJobsBySkills({ commit }, { username }) {
+    async getJobsBySkills({ commit, state }, { username }) {
       try {
+        state.isLoading = true;
         const res = await api.getJobsBySkills({ username });
-        alert(res.message);
         if (res.data) {
           commit("SET_MATCHED_JOBS", res.data);
         } else {
