@@ -12,11 +12,9 @@
         class="mb-2"
       >
         <b-card-text>
-          Job position: {{ jobPosition }}
-          Type: {{ jobType }}
+          <b>Job position:</b> {{ jobPosition }} <br>
+          <b>Type:</b> {{ jobType }} <br>
         </b-card-text>
-
-        <b-button href="#" variant="primary">Go somewhere</b-button>
       </b-card>
   </div>
 </template>

@@ -24,6 +24,13 @@ export default {
   #app {
     font-family: 'Lato', sans-serif;;
   }
+  .bg-dark {
+    background-color: #224569 !important;
+  }
+  .btn-primary {
+    background-color: #224569 !important;
+    border-color: #1d3650 !important;
+  }
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
