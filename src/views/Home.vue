@@ -4,7 +4,8 @@
     <h3>By Torre</h3>
     <p>Matchify your next remote dream job!</p>
     <p>You just have to write your Torre username and our system will take care of showing you the best positions that fit your skills</p>
-    <input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"><br><br>
+    <b-form-input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"
+            :state="!existErrorMessage" class="mb-3"></b-form-input>
     <b-button variant="primary" @click='getJobsBySkills'>Search!</b-button>
 
     <b-row class="mt-5">
