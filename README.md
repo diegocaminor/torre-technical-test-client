@@ -1,4 +1,18 @@
-# torre-technical-test-client
+# :ledger: torre-technical-test-client
+
+Client side for Torre technical test
+
+### 🛠️ Technologies
+
+- [**Node**](https://nodejs.org/en/)
+- [**Vuejs**](https://vuejs.org/)
+- [**Axios**](https://github.com/axios/axios)
+- [**BootstrapVue**](https://bootstrap-vue.org/)
+
+
+### 📷 Screenshots
+![](resources/matchify-mockup.jpg)
+![](resources/matchify-screenshot.jpg)
 
 ## Project setup
 ```
