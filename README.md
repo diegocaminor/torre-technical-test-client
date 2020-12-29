@@ -2,6 +2,9 @@
 
 Client side for Torre technical test
 
+### **Server side:** https://github.com/diegocaminor/torre-technical-test-server
+### **Client side:** https://github.com/diegocaminor/torre-technical-test-client
+
 ### 🛠️ Technologies
 
 - [**Node**](https://nodejs.org/en/)
