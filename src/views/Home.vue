@@ -23,17 +23,19 @@
     <b-row class="mt-5" v-if="!isLoading">
       <b-col cols="12" md="6" lg="4" v-for="job in matchedJobs" :key="job.id">
         <px-card
-          :title ="job.organizations[0].name"
-          :imgSrc ="job.organizations[0].picture"
-          :imgAlt ="job.organizations[0].name"
-          :jobPosition ="job.objective"
-          :jobType ="job.type"
+          :title = "job.organizations[0].name"
+          :imgSrc = "job.organizations[0].picture"
+          :imgAlt = "job.organizations[0].name"
+          :jobPosition = "job.objective"
+          :jobType = "job.type"
+          :compensation = "job.compensation? job.compensation : null"
+          :isRemote = "job.remote"
+          :status = "job.status"
         />
       </b-col>
     </b-row>
 
     <h1 v-if="existErrorMessage">{{errorMessage}}</h1>
-
   </div>
 </template>
 
