@@ -6,12 +6,14 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { VueSpinners } from "@saeris/vue-spinners";
+import { salaryFilter } from "@/assets/scripts/filters";
 
 const optionsSwal = {
   confirmButtonColor: "#38686a",
   cancelButtonColor: "#ff7674",
 };
 
+Vue.filter("salary", salaryFilter);
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
