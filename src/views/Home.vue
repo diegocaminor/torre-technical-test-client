@@ -5,7 +5,7 @@
     <p class="description">Matchify your next remote dream job! <br>
     You just have to write your Torre username and our system will take care of showing you the best positions that fit your skills</p>
     <b-form-input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"
-            :state="!existErrorMessage?null:!existErrorMessage" class="mb-3"></b-form-input>
+            :state="!existErrorMessage?null:!existErrorMessage" class="mb-3" placeholder="Torre's username"></b-form-input>
     <px-button @click.native='getJobsBySkills' msg="I feel lucky!"></px-button>
     <b-row class="text-center">
       <b-col></b-col>

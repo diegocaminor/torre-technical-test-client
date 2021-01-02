@@ -1,7 +1,7 @@
 <template>
   <div>
   <b-row align-h="end">
-    <b-col cols="3"><button class="btn draw-border text-right">{{msg}}</button></b-col>
+    <b-col sm="12" md="12" lg="3"><button class="btn draw-border text-right">{{msg}}</button></b-col>
   </b-row>
   </div>
 </template>

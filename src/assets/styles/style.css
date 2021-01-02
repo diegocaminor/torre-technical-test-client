@@ -12,7 +12,7 @@ body {
   text-transform: uppercase;
 }
 
-.subtitle {
+h2.subtitle {
   color: #052c57;
   font-family: "Raleway", sans-serif;
   font-size: 30px;
