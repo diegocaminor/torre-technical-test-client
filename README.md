@@ -15,7 +15,7 @@ Client side for Torre technical test
 
 ### 📷 Screenshots
 ![](resources/matchify-mockup.jpg)
-![](resources/matchify-screenshot.jpg)
+![](resources/matchify2-screenshot.png)
 
 ## Project setup
 ```
