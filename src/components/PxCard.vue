@@ -15,7 +15,7 @@
         <div class="torre-card__unit-stats torre-card__unit-stats--company clearfix">
           <div v-if="compensation" class="one-third">
             <div v-if="compensation.data">
-              <div v-if="compensation.data.maxAmount" class="stat large-text">{{ compensation.data.periodicity }} <small>{{ compensation.data.currency }}</small> {{ compensation.data.maxAmount | salary }} <span>💰</span></div>
+              <div v-if="compensation.data.maxAmount" class="stat large-text">{{ compensation.data.periodicity | capitalize }} <small>{{ compensation.data.currency }}</small> {{ compensation.data.maxAmount | salary }} <span>💰</span></div>
               <div v-else class="stat">Max - <span>💰</span></div>
               <div class="stat-value">Salary</div>
             </div>

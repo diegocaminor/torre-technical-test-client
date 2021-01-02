@@ -8,4 +8,10 @@ const salaryFilter = function(value) {
   return numeral(value).format("(0.00a)");
 };
 
-export { salaryFilter };
+const capitalizeFilter = function(value) {
+  if (!value) return "";
+  value = value.toString();
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
+
+export { salaryFilter, capitalizeFilter };

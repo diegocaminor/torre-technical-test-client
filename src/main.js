@@ -6,7 +6,7 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { VueSpinners } from "@saeris/vue-spinners";
-import { salaryFilter } from "@/assets/scripts/filters";
+import { salaryFilter, capitalizeFilter } from "@/assets/scripts/filters";
 
 const optionsSwal = {
   confirmButtonColor: "#38686a",
@@ -14,6 +14,8 @@ const optionsSwal = {
 };
 
 Vue.filter("salary", salaryFilter);
+Vue.filter("capitalize", capitalizeFilter);
+
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
