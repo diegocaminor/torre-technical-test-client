@@ -55,10 +55,10 @@ export default new Vuex.Store({
         console.log(error);
       }
     },
-    async getJobsBySkills({ commit, state }, { username }) {
+    async getJobsBySkills({ commit, state }, { username, compensation }) {
       try {
         state.isLoading = true;
-        const res = await api.getJobsBySkills({ username });
+        const res = await api.getJobsBySkills({ username, compensation });
         if (res.data) {
           commit("SET_MATCHED_JOBS", res.data);
         } else {

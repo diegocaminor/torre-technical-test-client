@@ -2,6 +2,11 @@
 body {
   background-color: #ffeeee !important;
 }
+
+.amount {
+  width: 25% !important;
+}
+
 .title {
   color: #052c57;
   font-family: "Raleway", sans-serif;

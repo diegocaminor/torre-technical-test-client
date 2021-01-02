@@ -18,10 +18,10 @@ const getBioByUsername = async ({ username }) => {
   }
 };
 
-const getJobsBySkills = async ({ username }) => {
+const getJobsBySkills = async ({ username, compensation }) => {
   try {
     let data = await axios({
-      url: `${apiUrl}jobs/skills/${username}`,
+      url: `${apiUrl}jobs/skills/${username}/?minAmount=${compensation.minAmount}&maxAmount=${compensation.maxAmount}&periodicity=${compensation.periodicity}`,
       method: "GET",
     });
     if (!data.data) {

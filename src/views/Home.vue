@@ -5,7 +5,23 @@
     <p class="description">Matchify your next remote dream job! <br>
     You just have to write your Torre username and our system will take care of showing you the best positions that fit your skills</p>
     <b-form-input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"
-            :state="!existErrorMessage?null:!existErrorMessage" class="mb-3" placeholder="Torre's username"></b-form-input>
+              :state="!existErrorMessage?null:!existErrorMessage" class="mb-3" placeholder="Torre's username"></b-form-input>
+    <b-form inline>
+      <b-input-group class="amount" size="lg" prepend="$" append=".00">
+        <b-form-input type="number" v-model="compensation.minAmount"  placeholder="Min amount"></b-form-input>
+      </b-input-group>
+      <b-input-group class="amount" size="lg" prepend="$" append=".00">
+        <b-form-input type="number" v-model="compensation.maxAmount" placeholder="Max amount"></b-form-input>
+      </b-input-group>
+      <b-dropdown id="dropdown-1" :text="compensation.periodicity" class="m-md-2">
+        <b-dropdown-item v-for="option in periodicity"
+                          :key="option"
+                          :value="option"
+                          @click="compensation.periodicity = option">
+          {{option | capitalize}}
+        </b-dropdown-item>
+      </b-dropdown>
+    </b-form>
     <px-button @click.native='getJobsBySkills' msg="I feel lucky!"></px-button>
     <b-row class="text-center">
       <b-col></b-col>
@@ -54,6 +70,12 @@ export default {
   data() {
     return {
       username: '',
+      periodicity: ["hourly", "monthly", "yearly"],
+      compensation: {
+        periodicity: "Select a periodicity",
+        minAmount: 0,
+        maxAmount: 0
+      }
     }
   },
   computed: {
@@ -66,8 +88,25 @@ export default {
       }
     },
     getJobsBySkills() {
+      if(this.compensation.periodicity === "Select a periodicity") {
+        this.compensation.periodicity = "";
+      }
+      if((this.compensation.minAmount != "" || this.compensation.minAmount != "") && !this.periodicity.includes(this.compensation.periodicity)) {
+        this.$swal({
+          icon: "error",
+          title: "Oops...",
+          text: "If you enter min amount or max amount, you must select a periodicity",
+        });
+        return;
+      }
+      if(this.compensation.minAmount != "") {
+        this.compensation.minAmount = parseInt(this.compensation.minAmount);
+      }
+      if(this.compensation.maxAmount != "") {
+        this.compensation.maxAmount = parseInt(this.compensation.maxAmount);
+      }
       if(this.username !== "") {
-        this.$store.dispatch('getJobsBySkills', {username: this.username})
+        this.$store.dispatch('getJobsBySkills', {username: this.username, compensation: this.compensation})
           .then(() => {
             if(!this.existErrorMessage) {
               this.$swal({
