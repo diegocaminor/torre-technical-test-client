@@ -1,13 +1,13 @@
 <template>
   <div class="about mt-5">
-    <h1>Matchify</h1>
-    <h3>By Torre</h3>
-    <p>Find your genome in order to know what are your current skills!</p>
-    <p>If there's no company that fit with your skills you can change it via <a href="https://torre.co">Torre.co</a></p>
-    <p>You just have to write your Torre username and our system will take care of showing you the best positions that fit your skills</p>
+    <h1 class="title">Matchify</h1>
+    <h2 class="subtitle">By Torre</h2>
+    <p class="description">Find your genome in order to know what are your current skills!</p>
+    <p class="description">If there's no company that fit with your skills you can change it via <a href="https://torre.co">Torre.co</a><br>
+    You just have to write your Torre username and our system will take care of showing you the best positions that fit your skills</p>
     <b-form-input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"
-            :state="!existErrorMessage" class="mb-3"></b-form-input>
-    <b-button variant="primary" @click='getBioByUsername'>Search Genome</b-button>
+            :state="!existErrorMessage?null:!existErrorMessage" class="mb-3"></b-form-input>
+    <px-button @click.native='getBioByUsername' msg="Wanna know my skills!"></px-button>
     <b-row class="text-center">
       <b-col></b-col>
       <b-col cols="1">
@@ -41,10 +41,12 @@
 <script>
 // @ is an alias to /src
 import { mapState } from 'vuex'
+import PxButton from "@/components/PxButton.vue";
 
 export default {
   name: "Genome",
   components: {
+    PxButton
   },
   data() {
     return {

@@ -1,12 +1,12 @@
 <template>
   <div class="home mt-5">
-    <h1>Matchify</h1>
-    <h3>By Torre</h3>
-    <p>Matchify your next remote dream job!</p>
-    <p>You just have to write your Torre username and our system will take care of showing you the best positions that fit your skills</p>
+    <h1 class="title">Matchify</h1>
+    <h2  class="subtitle">By Torre</h2>
+    <p class="description">Matchify your next remote dream job! <br>
+    You just have to write your Torre username and our system will take care of showing you the best positions that fit your skills</p>
     <b-form-input v-on:keyup="pressKey" type="text" id="username" name="username" v-model="username"
-            :state="!existErrorMessage" class="mb-3"></b-form-input>
-    <b-button variant="primary" @click='getJobsBySkills'>Search!</b-button>
+            :state="!existErrorMessage?null:!existErrorMessage" class="mb-3"></b-form-input>
+    <px-button @click.native='getJobsBySkills' msg="I feel lucky!"></px-button>
     <b-row class="text-center">
       <b-col></b-col>
       <b-col cols="1">
@@ -43,11 +43,13 @@
 // @ is an alias to /src
 import { mapState } from 'vuex'
 import PxCard from "@/components/PxCard.vue";
+import PxButton from "@/components/PxButton.vue";
 
 export default {
   name: "Home",
   components: {
-    PxCard
+    PxCard,
+    PxButton
   },
   data() {
     return {
@@ -82,7 +84,11 @@ export default {
             }
           })
       } else {
-        alert("Please enter a username from Torre");
+        this.$swal({
+          icon: "info",
+          title: "Oops...",
+          text: "Please enter a Torre's username",
+        });
       }
     },
   },

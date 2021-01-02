@@ -7,6 +7,7 @@ import VueSweetalert2 from "vue-sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import { VueSpinners } from "@saeris/vue-spinners";
 import { salaryFilter, capitalizeFilter } from "@/assets/scripts/filters";
+import "@/assets/styles/style.css";
 
 const optionsSwal = {
   confirmButtonColor: "#38686a",

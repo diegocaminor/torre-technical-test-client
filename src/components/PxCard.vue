@@ -6,7 +6,7 @@
         <div class="torre-card__image torre-card__image--company">
           <img :src="imgSrc ? imgSrc : 'https://torre-media.s3-us-west-2.amazonaws.com/subtorres/Gig/torre.png'" :alt="imgAlt" />
         </div>
-        <div class="torre-card__level torre-card__level--company">Level 6</div>
+        <div class="torre-card__type torre-card__type--company">{{ jobType }}</div>
         <div class="torre-card__unit-name">{{title}}</div>
         <div class="torre-card__unit-description">
           {{ jobPosition }}
@@ -140,13 +140,13 @@ export default {
     cursor: pointer;
     filter: grayscale(0%);
   }
-  .torre-card__level {
+  .torre-card__type {
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 700;
     margin-bottom: 3px;
   }
-  .torre-card__level--company {
+  .torre-card__type--company {
     color: #224569;
   }
   .torre-card__unit-name {
